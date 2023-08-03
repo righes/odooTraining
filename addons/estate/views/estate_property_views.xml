@@ -28,6 +28,9 @@
         <sheet>
           <h1>
             <field name="name"/>
+            <p>
+              <field name="tag_ids" widget="many2many_tags"/>
+            </p>
           </h1>
           <group>
             <group>
