@@ -20,10 +20,10 @@ class EstateProperty(models.Model):
     garden_orientation = fields.Selection(
         string = 'Garden Orientation',
         selection = [
-            ('North', 'North'),
-            ('South', 'South'),
-            ('East', 'East'),
-            ('West', 'West'),
+            ('north', 'North'),
+            ('south', 'South'),
+            ('east', 'East'),
+            ('west', 'West'),
         ],
     )
     active = fields.Boolean("Active", default=True)
@@ -59,3 +59,12 @@ class EstateProperty(models.Model):
     def _compute_best_price(self):
         for record in self:
             record.best_price = max(self.offer_ids.mapped("price"), default = 0)
+
+    @api.onchange("garden")
+    def _onchange_partner_id(self):
+        if self.garden:
+            self.garden_area = 10
+            self.garden_orientation = "north"
+        else:
+            self.garden_area = 0
+            self.garden_orientation = False
