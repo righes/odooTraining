@@ -52,3 +52,10 @@ class EstateProperty(models.Model):
     def _compute_total_area(self):
         for record in self:
             record.total_area = self.living_area + self.garden_area
+
+    best_price = fields.Float("Best Offer", compute = "_compute_best_price")
+
+    @api.depends("offer_ids.price")
+    def _compute_best_price(self):
+        for record in self:
+            record.best_price = max(self.offer_ids.mapped("price"), default = 0)
