@@ -27,8 +27,8 @@
     <field name="arch" type="xml">
       <form string="PropertyForm">
         <header>
-          <button name="finish_sale" type="object" string="Sold"/>
-          <button name="cancel_sale" type="object" string="Cancel"/>
+          <button type="object" string="Sold" name="finish_sale" states="offer_accepted" />
+          <button type="object" string="Cancel" name="cancel_sale" states="new,offer_received" />
           <field name="state" widget="statusbar" statusbar_visible="new,offer_received,offer_accepted,sold" />
         </header>
         <sheet>
