@@ -74,8 +74,8 @@ class EstateProperty(models.Model):
 
     def finish_sale(self):
         for record in self:
-            if record.state == "canceled":
-                raise UserError("Canceled Properties can't be sold!")
+            if record.state != "offer_accepted":
+                raise UserError("An offer must be accepted!")
             else:
                 record.state = "sold"
         return True
