@@ -3,9 +3,10 @@ from odoo import fields, models
 class EstatePropertyType(models.Model):
     _name = "estate.property.type"
     _description = "Estate Property Type Model"
-    _order = "name"
+    _order = "sequence, name"
 
     name = fields.Char("Name", required = True)
+    sequence = fields.Integer("Sequence", default = 1, help = "Used to order stages. Lower is better.")
     property_ids = fields.One2many("estate.property", "property_type_id", string="Properties")
 
     _sql_constraints = [

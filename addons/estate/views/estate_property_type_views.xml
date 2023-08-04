@@ -23,6 +23,9 @@
           <h1>
             <field name="name"/>
           </h1>
+          <group>
+            <field name="sequence" widget="handle"/>
+          </group>
           <notebook>
             <page string="Properties">
               <group>
