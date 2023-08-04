@@ -10,8 +10,8 @@
         <field name="validity"/>
         <field name="date_deadline"/>
         <field name="status" />
-        <button name="accept_offer" icon="fa-check" type="object"/>
-        <button name="refuse_offer" icon="fa-times" type="object"/>
+        <button type="object" name="accept_offer" icon="fa-check" attrs="{'invisible': [('status', 'in', ('accepted', 'refused'))]}" />
+        <button type="object" name="refuse_offer" icon="fa-times" attrs="{'invisible': [('status', 'in', ('accepted', 'refused'))]}" />
       </tree>
     </field>
   </record>

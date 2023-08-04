@@ -66,7 +66,7 @@
             </page>
             <page string="Offers">
               <group>
-                <field name="offer_ids"/>
+                <field name="offer_ids" attrs="{'readonly': [('state', 'in', ('offer accepted', 'sold', 'canceled'))]}" />
               </group>
             </page>
             <page string="Other Info">
