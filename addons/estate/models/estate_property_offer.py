@@ -1,5 +1,5 @@
 from odoo import api, fields, models
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 from datetime import timedelta
 
 class EstatePropertyOffer(models.Model):
@@ -54,6 +54,14 @@ class EstatePropertyOffer(models.Model):
             else:
                 record.status = "refused"
         return True
+
+    @api.model
+    def create(self, vals):
+        current_property = self.env['estate.property'].browse(vals['property_id'])
+        if vals['price'] < current_property.best_price:
+            raise ValidationError("Price can't be lower then the best offer!")
+        current_property.state = "offer_received"
+        return super().create(vals)
 
     _sql_constraints = [
         ("check_price", "check(price > 0)", "The price must be positive"),
