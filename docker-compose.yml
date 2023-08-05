@@ -15,7 +15,7 @@ services:
       - POSTGRES_PASSWORD=odoo
       - PGDATA=/var/lib/postgresql/data/pgdata
       - OE_VERSION=13.0
-    command: -u estate --dev xml
+    command: -u estate,estate_account --dev xml
   db:
     image: postgres:15
     environment:
