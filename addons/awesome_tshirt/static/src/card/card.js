@@ -1,6 +1,6 @@
 /** @odoo-module */
 
-const { Component } = owl;
+import { Component } from "@odoo/owl";
 
 export class Card extends Component {}
 
@@ -12,5 +12,9 @@ Card.props = {
       default: Object,
       title: { type: Object, optional: true },
     },
+  },
+  className: {
+    type: String,
+    optional: true,
   },
 };
