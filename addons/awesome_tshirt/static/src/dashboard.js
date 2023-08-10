@@ -6,6 +6,7 @@ import { useService } from "@web/core/utils/hooks";
 import { Domain } from "@web/core/domain";
 import { Layout } from "@web/search/layout";
 import { getDefaultConfig } from "@web/views/view";
+import { sprintf } from "@web/core/utils/strings";
 import { Card } from "./card/card";
 import { PieChart } from "./pie_chart/pie_chart";
 
@@ -59,6 +60,12 @@ class AwesomeDashboard extends Component {
   openLast7DaysCancelledOrders() {
     const domain = "[('create_date','>=', (context_today() - datetime.timedelta(days=7)).strftime('%Y-%m-%d')), ('state','=', 'cancelled')]";
     this.openOrders("Last 7 days cancelled orders", domain);
+  }
+
+  openFilteredBySizeOrders(size) {
+    const title = sprintf("Filtered orders by %s size", size);
+    const domain = `[('size','=', '${size}')]`;
+    this.openOrders(title, domain);
   }
 }
 

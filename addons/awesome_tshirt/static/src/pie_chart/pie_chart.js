@@ -29,6 +29,13 @@ export class PieChart extends Component {
     });
   }
 
+  onPieClick(ev, chartElem) {
+    if (chartElem.length) {
+      const clickedIndex = chartElem[0]._index;
+      this.props.onPieClick(this.labels[clickedIndex]);
+    }
+  }
+
   renderChart() {
     if (this.chart) {
       this.chart.destroy();
@@ -45,8 +52,16 @@ export class PieChart extends Component {
           },
         ],
       },
+      options: {
+        onClick: this.onPieClick.bind(this),
+      },
     });
   }
 }
 
 PieChart.template = "awesome_tshirt.PieChart";
+PieChart.props = {
+  data: { type: Object },
+  label: { type: String },
+  onPieClick: { type: Function },
+};
