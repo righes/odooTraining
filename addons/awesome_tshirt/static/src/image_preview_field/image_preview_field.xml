@@ -5,6 +5,6 @@
     <t t-if="props.value.length === 0">
       <p class="text-danger">MISSING TSHIRT DESIGN</p>
     </t>
-    <img t-att-src="props.value"/>
+    <img t-att-src="props.value" width="200" />
   </t>
 </templates>
