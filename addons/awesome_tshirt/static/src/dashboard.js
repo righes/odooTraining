@@ -1,6 +1,6 @@
 /** @odoo-module **/
 
-import { Component, useSubEnv, onWillStart } from "@odoo/owl";
+import { Component, useSubEnv, useState } from "@odoo/owl";
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
 import { Domain } from "@web/core/domain";
@@ -22,7 +22,8 @@ class AwesomeDashboard extends Component {
       controlPanel: { "top-right": false, "bottom-right": false },
     };
     this.action = useService("action");
-    this.tshirtService = useService("tshirtService");
+    const tshirtService = useService("tshirtService");
+    this.statistics = useState(tshirtService.statistics);
 
     this.keyToString = {
       average_quantity: "Average amount of t-shirt by order this month",
@@ -31,9 +32,6 @@ class AwesomeDashboard extends Component {
       nb_new_orders: "Number of new orders this month",
       total_amount: "Total amount of new orders this month",
     };
-    onWillStart(async () => {
-      this.statistics = await this.tshirtService.loadStatistics();
-    });
   }
 
   openCustomerView() {

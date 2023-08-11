@@ -1,18 +1,15 @@
 /** @odoo-module **/
 
-import { Component, onWillStart } from "@odoo/owl";
+import { Component, useState } from "@odoo/owl";
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
 import { Domain } from "@web/core/domain";
 
 export class StatSystray extends Component {
   setup() {
-    this.statService = useService("tshirtService");
+    const tshirtService = useService("tshirtService");
+    this.statistics = useState(tshirtService.statistics);
     this.action = useService("action");
-
-    onWillStart(async () => {
-      this.statistics = await this.statService.loadStatistics();
-    });
   }
 
   openNewOrders() {
