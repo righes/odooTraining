@@ -1,9 +1,8 @@
 /** @odoo-module */
 
+import { Component } from "@odoo/owl";
 import { registry } from "@web/core/registry";
 import { CharField } from "@web/views/fields/char/char_field";
-
-const { Component } = owl;
 
 class ImagePreviewField extends Component {}
 
