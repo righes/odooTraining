@@ -1,8 +1,16 @@
 /** @odoo-module */
 
-import { Component } from "@odoo/owl";
+import { Component, onWillStart } from "@odoo/owl";
+import { useService } from "@web/core/utils/hooks";
 
-export class CustomerList extends Component {}
+export class CustomerList extends Component {
+  setup() {
+    this.orm = useService("orm");
+    onWillStart(async () => {
+      this.partners = await this.orm.searchRead("res.partner", [], ["display_name"]);
+    });
+  }
+}
 
 CustomerList.template = "awesome_tshirt.CustomerList";
 
