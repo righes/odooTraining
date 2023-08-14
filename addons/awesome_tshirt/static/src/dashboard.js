@@ -8,6 +8,7 @@ import { Layout } from "@web/search/layout";
 import { getDefaultConfig } from "@web/views/view";
 import { sprintf } from "@web/core/utils/strings";
 import { Card } from "./card/card";
+import { CustomerAutocomplete } from "./customer_autocomplete/customer_autocomplete";
 import { PieChart } from "./pie_chart/pie_chart";
 
 class AwesomeDashboard extends Component {
@@ -67,7 +68,7 @@ class AwesomeDashboard extends Component {
   }
 }
 
-AwesomeDashboard.components = { Layout, Card, PieChart };
+AwesomeDashboard.components = { Layout, Card, PieChart, CustomerAutocomplete };
 AwesomeDashboard.template = "awesome_tshirt.clientaction";
 
 registry.category("actions").add("awesome_tshirt.dashboard", AwesomeDashboard);
