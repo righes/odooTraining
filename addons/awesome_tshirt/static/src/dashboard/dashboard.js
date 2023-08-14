@@ -7,9 +7,9 @@ import { Domain } from "@web/core/domain";
 import { Layout } from "@web/search/layout";
 import { getDefaultConfig } from "@web/views/view";
 import { sprintf } from "@web/core/utils/strings";
-import { Card } from "./card/card";
-import { CustomerAutocomplete } from "./customer_autocomplete/customer_autocomplete";
-import { PieChart } from "./pie_chart/pie_chart";
+import { Card } from "../card/card";
+import { CustomerAutocomplete } from "../customer_autocomplete/customer_autocomplete";
+import { PieChart } from "../pie_chart/pie_chart";
 
 class AwesomeDashboard extends Component {
   setup() {
@@ -71,4 +71,4 @@ class AwesomeDashboard extends Component {
 AwesomeDashboard.components = { Layout, Card, PieChart, CustomerAutocomplete };
 AwesomeDashboard.template = "awesome_tshirt.clientaction";
 
-registry.category("actions").add("awesome_tshirt.dashboard", AwesomeDashboard);
+registry.category("lazy_components").add("AwesomeDashboard", AwesomeDashboard);
