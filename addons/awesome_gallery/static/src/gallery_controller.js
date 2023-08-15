@@ -8,7 +8,7 @@ export class GalleryController extends Component {
   setup() {
     this.orm = useService("orm");
 
-    this.model = useState(new this.props.Model(this.orm, this.props.resModel, this.props.archInfo, this.props.domain));
+    this.model = useState(new this.props.Model(this.orm, this.props.resModel, this.props.fields, this.props.archInfo, this.props.domain));
 
     onWillStart(async () => {
       await this.model.load();
