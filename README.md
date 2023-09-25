@@ -1,3 +1,5 @@
+# tuto for developper 
+https://www.odoo.com/documentation/16.0/developer/tutorials/getting_started/02_setup.html 
 # Odoo Technical Training Sandbox
 
 ![Odoo Logo](https://upload.wikimedia.org/wikipedia/commons/5/50/Odoo_logo.svg)
